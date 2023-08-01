@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -28,5 +29,13 @@ public class OrderService {
 
         Order order = new Order(count, item.getPrice(), LocalDateTime.now(), member,item);
         orderRepository.save(order);
+    }
+
+    public Order orders(Long id){
+        return orderRepository.findById(id).get();
+    }
+
+    public List<Order> findByName(String name){
+        return orderRepository.findByname(name);
     }
 }
