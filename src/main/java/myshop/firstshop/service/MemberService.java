@@ -14,12 +14,12 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-@Transactional
 public class MemberService {
 
     private final MemberRepository memberRepository;
 
     // 회원가입
+    @Transactional
     public Long join(Member member){
         Member save = memberRepository.save(member);
         return save.getId();
@@ -36,21 +36,28 @@ public class MemberService {
    }
 
    //업데이트
+   @Transactional
     public void update(Long id, MemberDto memberDto){
         // 예외 처리
         Optional<Member> findId = memberRepository.findById(id);
+
         // 값이 있는지 없는지 확인
         if(findId.isPresent()){
-            throw new NoSuchElementException("No Found Id : "+ id);
-        } else{
             Member member = memberRepository.findById(id).get();
             member.update(memberDto);
+        } else{
+            throw new NoSuchElementException("No Found Id : "+ id);
         }
     }
 
     // 삭제
+    @Transactional
     public void delete(Long id){
         memberRepository.deleteById(id);
+    }
+
+    public List<Member> findAll(){
+        return memberRepository.findAll();
     }
 
 }

@@ -12,8 +12,6 @@ import java.util.List;
 @Getter
 public class MemberDto {
 
-    private Long id;
-
     private String name;
 
     private String password;
@@ -25,8 +23,7 @@ public class MemberDto {
     @OneToMany(mappedBy = "member")
     private List<Order> orders;
 
-    public MemberDto(Long id, String name, String password, LocalDateTime birthDate, String phoneNumber, String email) {
-        this.id = id;
+    public MemberDto(String name, String password, LocalDateTime birthDate, String phoneNumber, String email) {
         this.name = name;
         this.password = password;
         this.birthDate = birthDate;

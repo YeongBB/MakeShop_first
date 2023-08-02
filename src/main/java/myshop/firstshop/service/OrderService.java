@@ -35,7 +35,4 @@ public class OrderService {
         return orderRepository.findById(id).get();
     }
 
-    public List<Order> findByName(String name){
-        return orderRepository.findByname(name);
-    }
 }

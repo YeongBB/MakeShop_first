@@ -42,11 +42,11 @@ public class OrderController {
         return "redirect:/orders";
     }
 
-    @GetMapping("/orders")
+/*    @GetMapping("/orders")
     public String orderList(@ModelAttribute("itemId") String itemId,Model model){
         List<Order> orders = orderService.findByName(itemId);
         model.addAttribute("orders", orders);
         return "order/orderList";
-    }
+    }*/
 
 }

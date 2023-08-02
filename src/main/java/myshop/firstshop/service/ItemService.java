@@ -28,8 +28,7 @@ public class ItemService {
 
     // Item 업데이트
     public void updateItem(Long id, String name, int price, int quantity){
-        Optional<Item> findItem = itemRepository.findOne(id);
-        Item item = itemRepository.findOne(id).get();
+        Item item = itemRepository.findById(id).get();
         item.updateItem(name,price,quantity);
     }
 
